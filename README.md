@@ -30,9 +30,7 @@ COMO EMPEZAR:
 		myvenv\Scripts\activate
 		
 	y escribir lo siguiente:
-	
-		python -m pip install Pillow 
-		python -m pip install django-admin-interface
+
 		python manage.py migrate
    
   para VER página web: 
@@ -45,18 +43,14 @@ COMO EMPEZAR:
   para EDITAR página web: 
   
 	3. Escribir en la consola:
-  
+	
+  		python -m pip install Pillow 
+		python -m pip install django-admin-interface
       		pip install -r requirements.txt
       
   listo para editar proyecto:)
   
   !IMPORTANTE
- 
-  Si no desea crear un administrador, puede usar la cuenta:
-  
-  Usuario: Colunga
-  
-  Contraseña: Colunga123
   
   Si usted va a administrar el sitio debe crearse una cuenta sigiendo los siguientes pasos: 
   
