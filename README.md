@@ -42,8 +42,12 @@ COMO EMPEZAR:
   listo para editar proyecto:)
   
   !IMPORTANTE
+  Si no desea crear un administrador, puede usar la cuenta:
   
-  Si usted va a administrar el sitio debe crearse una cuenta sigiendo los siguientes pasos:
+  Usuario: Colunga
+  Contraseña: Colunga123
+  
+  Si usted va a administrar el sitio debe crearse una cuenta sigiendo los siguientes pasos: 
   1. Debe estar en la carpeta en Plataforma-Colunga
   2. Debe escribir en la consola lo siguinte:
       
@@ -100,8 +104,6 @@ II
 ![Captura de pantalla (314)](https://user-images.githubusercontent.com/62680704/117990158-e2bcc900-b30a-11eb-9ce7-5fe13f1e2114.png)
 
 ![Captura de pantalla (315)](https://user-images.githubusercontent.com/62680704/117990166-e4868c80-b30a-11eb-932f-35d46d8d6d12.png)
-
-![Captura de pantalla (317)](https://user-images.githubusercontent.com/62680704/117990205-ecdec780-b30a-11eb-990d-7675b01fb22e.png)
 
 
 VÍAS A MEJORAR (ver issues)
