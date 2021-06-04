@@ -1,6 +1,6 @@
 SOBRE EL PROYECTO:
 
-Nuestro propósito es crear una plataforma para la fundación Colunga y todas las demás organizaciones que participan en ella con el fin de crear un espacio donde se pueda desarrollar la comunidad virtual entre colaboradores y que estos puedan llevar a sus reuniones y mantenerse informados acerca de las actividades que se organicen de una manera óptima. 
+Nuestro propósito es crear una plataforma para la organización Colunga y todas las demás organizaciones que participan en ella con el fin de crear un espacio donde se pueda desarrollar la comunidad virtual entre colaboradores y que estos puedan llevar a sus reuniones y mantenerse informados acerca de las actividades que se organicen de una manera óptima. 
 
   Construido con:
   
@@ -24,6 +24,7 @@ COMO EMPEZAR:
  	 ej:
     		cd Downloads
     		cd Plataforma-Colunga
+		cd Sprint1
    
   para VER página web: 
   
@@ -48,7 +49,7 @@ COMO EMPEZAR:
   Contraseña: Colunga123
   
   Si usted va a administrar el sitio debe crearse una cuenta sigiendo los siguientes pasos: 
-  1. Debe estar en la carpeta en Plataforma-Colunga
+  1. Debe estar en la carpeta Sprint1
   2. Debe escribir en la consola lo siguinte:
       
       python manage.py createsuperuser
