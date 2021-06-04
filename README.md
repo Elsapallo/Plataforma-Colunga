@@ -19,17 +19,21 @@ COMO EMPEZAR:
 
   Instalación para VER página web: 
   
+  	! Si dispone de un dispositivo macOS debe remplazar los comandos "python" por "python3"
+  
 	1. Descargar ZIP del repositorio (https://github.com/Elsapallo/Plataforma-Colunga.git)
-  	2. Derigirse desde su consola a la carpeta descargada 
+  	2. Dirigirse desde su consola a la carpeta descargada y luego a Sprint1
  	 ej:
     		cd Downloads
     		cd Plataforma-Colunga
 		cd Sprint1
+		myvenv\Scripts\activate
 		
 	y escribir lo siguiente:
 	
 		python -m pip install Pillow 
 		python -m pip install django-admin-interface
+		python manage.py migrate
    
   para VER página web: 
   	
@@ -42,7 +46,6 @@ COMO EMPEZAR:
   
 	3. Escribir en la consola:
   
-      		myvenv\Scripts\activate
       		pip install -r requirements.txt
       
   listo para editar proyecto:)
