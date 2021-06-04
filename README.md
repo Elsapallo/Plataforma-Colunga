@@ -25,9 +25,14 @@ COMO EMPEZAR:
     		cd Downloads
     		cd Plataforma-Colunga
 		cd Sprint1
+		
+	y escribir lo siguiente:
+	
+		python -m pip install Pillow 
+		python -m pip install django-admin-interface
    
   para VER página web: 
-  
+  	
   	3. Escribir en la consola:  python manage.py runserver
   	4. Abrir el navegador y buscar la url:  http://127.0.0.1:8000/
   
@@ -43,12 +48,15 @@ COMO EMPEZAR:
   listo para editar proyecto:)
   
   !IMPORTANTE
+ 
   Si no desea crear un administrador, puede usar la cuenta:
   
   Usuario: Colunga
+  
   Contraseña: Colunga123
   
   Si usted va a administrar el sitio debe crearse una cuenta sigiendo los siguientes pasos: 
+  
   1. Debe estar en la carpeta Sprint1
   2. Debe escribir en la consola lo siguinte:
       
