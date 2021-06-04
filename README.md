@@ -14,20 +14,21 @@ COMO EMPEZAR:
 
 	- Python 3.7 o superior
 	- pip de python 
-  - En caso de querer editar el proyecto, debe disponer de un entorno de desarrollo compatible con python
+  	- En caso de querer editar el proyecto, debe disponer de un entorno de desarrollo compatible con python
 
 
   Instalación para VER página web: 
   
 	1. Descargar ZIP del repositorio (https://github.com/Elsapallo/Plataforma-Colunga.git)
-  2. Derigirse desde su consola a la carpeta descargada 
-  ej:
-    cd Downloads
-    cd Plataforma-Colunga
+  	2. Derigirse desde su consola a la carpeta descargada 
+ 	 ej:
+    		cd Downloads
+    		cd Plataforma-Colunga
    
   para VER página web: 
-  3. Escribir en la consola:  python manage.py runserver
-  4. Abrir el navegador y buscar la url:  http://127.0.0.1:8000/
+  
+  	3. Escribir en la consola:  python manage.py runserver
+  	4. Abrir el navegador y buscar la url:  http://127.0.0.1:8000/
   
   Listo para ver página web:)
   
@@ -35,8 +36,8 @@ COMO EMPEZAR:
   
 	3. Escribir en la consola:
   
-      myvenv\Scripts\activate
-      pip install -r requirements.txt
+      		myvenv\Scripts\activate
+      		pip install -r requirements.txt
       
   listo para editar proyecto:)
   
