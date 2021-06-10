@@ -27,7 +27,7 @@ function global:deactivate ([switch]$NonDestructive) {
 
 deactivate -nondestructive
 
-$env:VIRTUAL_ENV="C:\Users\soadi\Downloads\Landing-page-main\myvenv"
+$env:VIRTUAL_ENV="C:\Users\soadi\Documents\GitHub\Plataforma-Colunga\Sprint1\myvenv"
 
 if (! $env:VIRTUAL_ENV_DISABLE_PROMPT) {
     # Set the prompt to include the env name
