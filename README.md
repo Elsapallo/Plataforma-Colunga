@@ -67,7 +67,13 @@ USO
 
 1. vaya a su navegador y busque: http://127.0.0.1:8000/
 
-1+. Si desea administrar el sitio, debe ingresar a su navegador la url:  http://127.0.0.1:8000/admin/ e ingresar con los datos de la sección "!IMPORTANTE" 
+1+. Si desea administrar el sitio, debe ingresar a su navegador la url:  http://127.0.0.1:8000/admin/ 
+
++ADMIN+
+- Debe ingresar con el usuario creado en "!IMPORTANTE"
+- Aquí usted podrá ingresar miembros, instituciones y otros administradores (en "usuarios") que podrán realizar acciones que usted decida que puede modificar
+- Para ingresar miembros, debe haber creada una institución (porque usuario debe pertenecer a una)
+! Al ingresar un miembro, el campo "PIN" no se debe modificar
 
 2. Una vez en la página hacer click en plataforma o simplemente bajar mediante scroll
 
