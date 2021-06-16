@@ -24,20 +24,18 @@ class Organizaciones(models.Model):
     email_organizacion= models.EmailField()
     descripcion_organizacion= models.CharField(max_length=200, null=True)
     #miembros = models.ForeignKey(Miembro, null=True, blank=True, on_delete=models.CASCADE)
+    def __str__ (self):
 
+       return self.nombre_organizacion
 
-    def str(self):
-
-
-        return self.nombre_organizacion
-
-opciones = []
+#opciones = []
 a = 0
 #org = Organizaciones.objects.all()
-org = Organizaciones.objects.values_list('id', 'nombre_organizacion')
 
-for i in org:
-    opciones.append(list(i))
+#org = Organizaciones.objects.values_list('id', 'nombre_organizacion')
+
+#for i in org:
+    #opciones.append(list(i))###
 
 class Miembro(models.Model):
     nombre = models.CharField(max_length=30)
@@ -46,7 +44,7 @@ class Miembro(models.Model):
     email = models.EmailField()
     contraseña = models.CharField(max_length=15, null=True)
     cel = models.CharField(max_length=15, verbose_name="Celular")
-    institucion = models.IntegerField(choices=opciones, null=True, verbose_name="Institución")
+    institucion = models.ForeignKey(Organizaciones,null=True, on_delete=models.CASCADE, verbose_name="Institución")
     photo = models.ImageField(upload_to="perfil", null=True, verbose_name="Foto de perfil")
     pin = models.IntegerField(default=000)
 
