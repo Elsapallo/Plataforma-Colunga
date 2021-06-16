@@ -2,7 +2,7 @@ from django.shortcuts import render
 #from django.http import HttpResponse
 #import datetime
 #from django.template import Template, Context
-from apuri.models import Miembro
+from apuri.models import Miembro, Organizaciones
 from django.core.mail import send_mail
 from django.conf import settings
 from random import randint
@@ -28,7 +28,10 @@ def Login(request):
 
              if usuario.contraseña == contraseña:
 
-                 institucion = usuario.institucion
+                 inst = Organizaciones.objects.filter(id__exact=usuario.institucion)
+                 for instit in inst:
+                     institucion = instit.nombre_organizacion
+
                  nombre = usuario.nombre
                  ap_pat = usuario.apellido_pat
                  ap_mat = usuario.apellido_mat
