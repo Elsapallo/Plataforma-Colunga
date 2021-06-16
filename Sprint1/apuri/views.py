@@ -28,10 +28,8 @@ def Login(request):
 
              if usuario.contraseña == contraseña:
 
-                 inst = Organizaciones.objects.filter(id__exact=usuario.institucion)
-                 for instit in inst:
-                     institucion = instit.nombre_organizacion
 
+                 institucion = usuario.institucion
                  nombre = usuario.nombre
                  ap_pat = usuario.apellido_pat
                  ap_mat = usuario.apellido_mat
