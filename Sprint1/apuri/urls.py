@@ -10,5 +10,5 @@ urlpatterns = [
     path('Re_contraseña/',views.Re_contraseña),
     path('inicio/', views.inicio, name='inicio'),
     path('', views.Portal, name='Portal'),
-    path('', views.Portal, name='Portal'),
+    path('Organizaciones/', views.Organizaciones),
 ]

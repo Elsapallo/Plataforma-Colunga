@@ -21,8 +21,9 @@ class Post(models.Model):
 
 class Organizaciones(models.Model):
     nombre_organizacion= models.CharField(max_length=30, null=False)
-    email_organizacion= models.EmailField()
+    pag_web = models.CharField(max_length=100, null=True)
     descripcion_organizacion= models.CharField(max_length=200, null=True)
+    logo = models.ImageField(upload_to="Logos", null=True, verbose_name="Logo institución")
     #miembros = models.ForeignKey(Miembro, null=True, blank=True, on_delete=models.CASCADE)
     def __str__ (self):
 

@@ -14,12 +14,12 @@ def post_list(request):
 
 def Login(request):
 
-    if request.GET["user"]:
+    if request.POST["user"]:
         #mensaje_usu = 'Usuario: %r <br> ' %request.GET["user"]
-        email = request.GET["user"]
+        email = request.POST["user"]
         usuarios = Miembro.objects.filter(email__exact=email)
 
-        contraseña = request.GET['pass']
+        contraseña = request.POST['pass']
 
         mensaje = 'Correo incorrecto'
         f = "no"
@@ -60,14 +60,14 @@ def Login(request):
 
 def Recuperacion(request):
 
-    if request.GET["nuser"]:
+    if request.POST["nuser"]:
 
         #email = request.GET["user"]
         #usuarios = Miembro.objects.filter(email__exact=email)
 
         #contraseña = request.GET['pass']
 
-        email = request.GET["nuser"]
+        email = request.POST["nuser"]
         usuarios = Miembro.objects.filter(email__exact=email)
 
         mensaje = 'El correo que ingresó no está registrado '
@@ -99,12 +99,12 @@ def Recuperacion(request):
 
 def Re_contraseña(request):
 
-    if request.GET["reuser"]:
-        email = request.GET["reuser"]
+    if request.POST["reuser"]:
+        email = request.POST["reuser"]
         usuarios = Miembro.objects.filter(email__exact=email)
-        contraseña = request.GET['new_pass']
-        recontraseña = request.GET['re_pass']
-        pin = request.GET['pin']
+        contraseña = request.POST['new_pass']
+        recontraseña = request.POST['re_pass']
+        pin = request.POST['pin']
         mensaje = 'Correo no registrado!'
         f = "no"
 
@@ -148,6 +148,8 @@ def Portal(request):
     #cliente = get_object_or_404(Miembro,cel = celular)
     return render(request, 'Portal.html')
 
+def Organizaciones(request):
+    return render(request, 'Organizaciones.html')
 
 
 

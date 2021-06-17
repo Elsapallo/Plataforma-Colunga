@@ -79,7 +79,7 @@
 						<div class="card card-body">
                         {%  if mensaje == "Contraseña incorrecta" %}
 
-                               <form action="/Login/" method="GET">
+                               <form action="/Login/" method="post">{% csrf_token %}
 							<div class="form-floating mb-3">
 								<input type="email" name="user" class="form-control" id="floatingInput" placeholder="                              nombre@organización.cl">
 								<label for="floatingInput">Correo electrónico</label>
@@ -100,7 +100,7 @@
 
 
                         {% elif mensaje == "Correo incorrecto" %}
-                                      <form action="/Login/" method="GET">
+                                      <form action="/Login/" method="post">{% csrf_token %}
 							<div class="form-floating mb-3">
 								<input type="email" name="user" class="form-control" id="floatingInput" placeholder="                             nombre@organización.cl">
 								<label for="floatingInput">Correo electrónico</label>
@@ -120,7 +120,7 @@
 
 
                         {% else %}
-                            <form action="/Login/" method="GET">
+                            <form action="/Login/" method="post">{% csrf_token %}
 							<div class="form-floating mb-3">
 								<input type="email" name="user" class="form-control" id="floatingInput" placeholder="                              nombre@organización.cl">
 								<label for="floatingInput">Correo electrónico</label>
@@ -133,6 +133,7 @@
 
 							</div>
 							<input type="submit" class="button wide primary" value="Ingresar a la Comunidad Colunga">
+
                                 </form>
 
 
@@ -189,7 +190,7 @@
                                                          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                                              </div>
                                          <div class="offcanvas-body">
-                                             <form action="/Re_contraseña/" method="GET">
+                                             <form action="/Re_contraseña/" method="post">{% csrf_token %}
                                                  <div class="form-floating mb-3">
 							            	<input type="email" name="reuser" class="form-control" id="floatingInput" placeholder="                           nombre@organización.cl">
 							            	<label for="floatingInput">Correo electrónico</label>
