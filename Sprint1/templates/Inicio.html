@@ -7,16 +7,18 @@
 {% load static %}
 
 
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 	<head>
-		<title>User</title>
+		<title>{{ nombre }} {{ ap_pat }}</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="{% static 'css/main2.css' %}" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/626dd6f811.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="{% static 'css/main2.css' %}" />
 		<noscript><link rel="stylesheet" href="{% static 'css/noscript2.css' %}" /></noscript>
 		<link rel="shortcut icon" type="image/x-icon" href="{% static 'css/images/logo1.ico' %}">
 
-        <script src="https://kit.fontawesome.com/626dd6f811.js" crossorigin="anonymous"></script>
 	</head>
 	<body class="is-preload">
 
@@ -26,29 +28,30 @@
 				<!-- Header -->
 					<header id="header" class="alt">
 						{%if foto.url%}
-							<span class="image"><img src="{{foto.url}}" widht = "300" height = "300" /></span>
+							<span class="logo" ><img src="{{foto.url}}" widht = "300" height = "300" /></span>
+                        {% else %}
+                            <span class="logo"><img src="{% static 'css/user1.png' %}" alt="" /></span>
 						{%endif%}
 						<h1>{{ nombre }} {{ ap_pat }} {{ ap_mat }}</h1>
-						<p>BIENVENIDO<br />
-                        Organización :<a href="https://www.hogardecristo.cl/">{{ institucion }}</a>
-								<ul>{{ query }}</ul></a></p>
+						<p>BIENVENID@<br />
+                         Organización :<a href="#{{institucion}}">{{ institucion }}</a>
+								<ul>{{ query }} </ul></a></p>
 
 					</header>
-
 				<!-- Nav -->
-					<nav id="nav">
+					<nav id="nav" class="">
 						<ul>
-							<li><a href="#intro">Anuncios
+							<li><a href="#anuncios" class="active">Anuncios
 								<span class="icon solid fa-info-circle"></span></a></li>
-							<li><a href="#first">Calendario
+							<li><a href="#calendario">Calendario
 								<span class="icon solid fa-calendar-day"></span></a></li>
-							<li><a href="#second">Reuniones
+							<li><a href="#social">Reuniones
 								<span class="icon solid fa-coffee"></span></a></li>
-							<li><a href="#cta">Foro
+							<li><a href="#foro">Foro
 								<span class="icon solid fa-comments"></span></a></li>
-							<li><a href="#third">Organizaciones
+							<li><a href="#organizaciones">Organizaciones
 								<span class="icon solid fa-users"></span></a></li>
-							<li><a href="javascript:history.back()">Cerrar sesión
+							<li><a href="http://127.0.0.1:8000/">Cerrar sesión
 								<span class="fas fa-power-off"></span></a></li>
 						</ul>
 					</nav>
@@ -57,31 +60,141 @@
 					<div id="main">
 
 						<!-- Teams -->
-							<section id="intro" class="main">
+							<section id="anuncios" class="main special">
 								<div class="spotlight">
 									<div class="content">
 										<header class="major">
 											<h2>Anuncios</h2>
 										</header>
 										<p>Infórmate de todo lo que está pasando</p>
+                                    {% if nanuncios == 0 %}
+                                        <h1>No hay anuncios ):</h1>
 
-									</div>
-									<span class="icon solid fa-info-circle"></span>
-								</div>
+                                    {% elif nanuncios == 1 %}
+                                        <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                                            <div class="carousel-inner">
+                                                <div class="carousel-item active" data-bs-interval="10000">
+                                                    <img src="{{ anuncio1.foto.url }}" class="d-block w-100" alt="...">
+                                                    <div class="carousel-caption d-none d-md-block">
+                                                        <h1>{{ anuncio1.titulo }}</h1>
+                                                        <p>{{ anuncio1.texto }}<br />
+                                                         {% if anuncio1.hini %}
+                                                            Inicio:    {{ anuncio1.hini }}<br />
+                                                            Término:   {{ anuncio1.hfin }}
+                                                         {% endif %}    </p></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    {% elif nanuncios == 2 %}
+                                        <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                                            <div class="carousel-indicators">
+                                                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                            </div>
+                                            <div class="carousel-inner">
+                                                <div class="carousel-item active" data-bs-interval="5000">
+                                                    <img src="{{ anuncio1.foto.url }}" class="d-block w-100" alt="...">
+                                                    <div class="carousel-caption d-none d-md-block">
+                                                        <h1>{{ anuncio1.titulo }}</h1>
+                                                        <p>{{ anuncio1.texto }}<br />
+                                                         {% if anuncio1.hini %}
+                                                            Inicio:    {{ anuncio1.hini }}<br />
+                                                            Término:   {{ anuncio1.hfin }}
+                                                         {% endif %}    </p></div>
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <img src="{{ anuncio2.foto.url }}" class="d-block w-100" alt="...">
+                                                    <div class="carousel-caption d-none d-md-block">
+                                                        <h1>{{  anuncio2.titulo }}</h1>
+                                                        <p>{{ anuncio2.texto }}<br />
+                                                         {% if anuncio1.hini %}
+                                                            Inicio:    {{ anuncio2.hini }}<br />
+                                                            Término:   {{ anuncio2.hfin }}
+                                                         {% endif %}    </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    {% elif nanuncios == 3 %}
+                                        <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                                            <div class="carousel-indicators">
+                                                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                            </div>
+                                            <div class="carousel-inner">
+                                                <div class="carousel-item active" data-bs-interval="10000">
+                                                    <img src="{{ anuncio1.foto.url }}" class="d-block w-100" alt="...">
+                                                    <div class="carousel-caption d-none d-md-block">
+                                                        <h1>{{ anuncio1.titulo }}</h1>
+                                                        <p>{{ anuncio1.texto }}<br />
+                                                         {% if anuncio1.hini %}
+                                                            Inicio:    {{ anuncio1.hini }}<br />
+                                                            Término:   {{ anuncio1.hfin }}
+                                                         {% endif %}    </p>
+                                                     </div>
+                                                </div>
+                                                <div class="carousel-item" data-bs-interval="10000">
+                                                    <img src="{{ anuncio2.foto.url }}" class="d-block w-100" alt="...">
+                                                    <div class="carousel-caption d-none d-md-block">
+                                                        <h1>{{ anuncio2.titulo }}</h1>
+                                                        <p>{{ anuncio2.texto }}<br />
+                                                         {% if anuncio1.hini %}
+                                                            Inicio:    {{ anuncio2.hini }}<br />
+                                                            Término:   {{ anuncio2.hfin }}
+                                                         {% endif %}    </p>
+                                                    </div>
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <img src="{{ anuncio3.foto.url }}" class="d-block w-100" alt="...">
+                                                    <div class="carousel-caption d-none d-md-block">
+                                                        <h1>{{ anuncio3.titulo }}</h1>
+                                                        <p>{{ anuncio3.texto }}<br />
+                                                         {% if anuncio1.hini %}
+                                                            Inicio:    {{ anuncio3.hini }}<br />
+                                                            Término:   {{ anuncio3.hfin }}
+                                                         {% endif %}    </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        {% endif %} <br>
+                                        {% if rol == "Administrador" %}
+
+                                            <button class="button" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Agregar anuncio</button>
+
+                                                <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
+                                                    <div class="offcanvas-header">
+                                                        <h5 class="offcanvas-title" id="offcanvasBottomLabel">Agregar Anuncio</h5>
+                                                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                                    </div>
+                                                <div class="offcanvas-body small">
+                                                    ...
+                                                </div>
+                                                </div>
+
+                                        {% endif %}
+
+
+                                        </div>
+                                        </div>
 							</section>
 
 						<!-- First Section -->
-							<section id="first" class="main special">
+							<section id="calendario" class="main special">
 								<header class="major">
 									<h2>Calendario de Actividades</h2>
 								</header>
 
 								<!--<ul class="features">-->
-                <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=2&amp;bgcolor=%237CB342&amp;ctz=America%2FSantiago&amp;src=cnJlcjZ1MmphbDVhdGt1bnFlajdzYWZyYjBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=ZXMuY2wjaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%23009688&amp;color=%230B8043&amp;title=COLUNGA&amp;showPrint=0&amp;showCalendars=0" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+                <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=2&amp;bgcolor=%237CB342&amp;ctz=America%2FSantiago&amp;src=cnJlcjZ1MmphbDVhdGt1bnFlajdzYWZyYjBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=ZXMuY2wjaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%23009688&amp;color=%230B8043&amp;title=COLUNGA&amp;showPrint=0&amp;showCalendars=0" style="border-width:0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
 
 							</section>
 						<!-- Second Section -->
-							<section id="second" class="main special">
+							<section id="social" class="main special">
 								<header class="major">
 									<h2>Sala de reuniones</h2>
 									<p>Aquí podrás interactuar con tus compañeros <br />
@@ -90,8 +203,8 @@
 								<ul class="statistics">
 
 									<li class="style3">
-										<span class="icon solid fa-users"></span>
-										<strong>Zoom</strong> reuniones
+										<span class="icon solid fa-users" ></span>
+										<a href="https://zoom.us/join"> <strong>Zoom</strong> reuniones</a>
 									</li>
                                     <li class="style2">
 										<span class="icon brands fa-discord"></span>
@@ -103,12 +216,27 @@
 
 								<footer class="major">
 									<ul class="actions special">
-										<li><a href="https://teams.microsoft.com/l/entity/{TeamsAppId}/{TeamsTabId}?webUrl={myURL}" class="button">Ir a Salas</a></li>
+										<li> <br> </li>
 									</ul>
 								</footer>
 							</section>
 
-						<section id="third" class="main special">
+
+						<!-- Get Started -->
+							<section id="foro" class="main special">
+								<header class="major">
+									<h2>Foro</h2>
+
+								</header>
+								<footer class="major">
+									<ul class="actions special">
+										<li><a href="Fundacion.html" class="button primary">Ir a foros</a></li>
+										<li><a href="Fundacion.html" class="button">Crear Foro</a></li>
+									</ul>
+								</footer>
+							</section>
+
+                        <section id="organizaciones" class="main special">
 							<header class="major">
 								<h2>Organizaciones</h2>
 								<p>Aquí podrás ver y buscar organizaciones  <br />
@@ -117,26 +245,44 @@
 
 
 							<footer class="major">
+                            <!-- Wrapper
 								<ul class="actions special">
-									<li><a href="Organizaciones/" class="button">Ver Organizaciones</a></li>
+									<li><a href="Fundaciones/" class="button">Ver Organizaciones</a></li>
 								</ul>
+								--->
+                                <ul class="features">
+
+                                    {% for i in org %}
+                                        <p>
+                                            <a class="image" data-bs-toggle="collapse" href="#{{i.nombre_organizacion}}" role="button" aria-expanded="true" aria-controls="collapseExample">
+                                               <img src="{{i.logo.url}}" widht = "300" height = "300">
+                                            </a>
+                                        </p>
+                                        <div class="collapse" id="{{i.nombre_organizacion}}">
+                                            <div class="card card-body">
+                                            <p>{{ i.pag_web }}</p>
+                                            <h1>{{ i.descripcion_organizacion }}</h1>
+                                            <br>
+                                                <ul class="features">
+                                                {% for miembro in miembros %}
+                                                    {%  if miembro.institucion == i %}
+                                                        <li>
+                                                            <span class="image"><img src="{{ miembro.photo.url }}" widht = "100" height = "100"></span>
+									                    	<h3 ><strong>{{ miembro.nombre }} {{ miembro.apellido_pat }}</strong></h3>
+										                <p>{{ miembro.cargo }}<br>{{ miembro.email }}</p>
+									                </li>
+
+                                                    {% endif %}
+                                                {% endfor %}
+                                                </ul>
+
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </ul>
+
 							</footer>
 						</section>
-
-
-						<!-- Get Started -->
-							<section id="cta" class="main special">
-								<header class="major">
-									<h2>Foro</h2>
-
-								</header>
-								<footer class="major">
-									<ul class="actions special">
-										<li><a href="Foro.html" class="button primary">Ir a foros</a></li>
-										<li><a href="Foro.html" class="button">Crear Foro</a></li>
-									</ul>
-								</footer>
-							</section>
 
 					</div>
 
@@ -146,13 +292,13 @@
 			</div>
 
 		<!-- Scripts -->
-			<script src="{% static 'js/jquery.min.js' %}"></script>
-			<script src="{% static 'js/jquery.scrollex.min.js' %}"></script>
-			<script src=  "{% static 'js/jquery.scrolly.min.js' %}"></script>
-			<script src="{% static 'js/browser.min.js' %}"></script>
-			<script src= "{% static 'js/breakpoints.min.js' %}"></script>
-			<script src="{% static 'js/util.js' %}"></script>
-			<script src="{% static 'js/main.js' %}"></script>
+			<script src="{% static 'js/jquery.min2.js' %}"></script>
+			<script src="{% static 'js/jquery.scrollex.min2.js' %}"></script>
+			<script src=  "{% static 'js/jquery.scrolly.min2.js' %}"></script>
+			<script src="{% static 'js/browser.min.js2' %}"></script>
+			<script src= "{% static 'js/breakpoints.min2.js' %}"></script>
+			<script src="{% static 'js/util2.js' %}"></script>
+			<script src="{% static 'js/main2.js' %}"></script>
 
 
 	</body>

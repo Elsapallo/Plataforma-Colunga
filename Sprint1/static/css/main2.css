@@ -99,11 +99,11 @@ input, select, textarea {
 	}
 
 	body {
-		background-color: #1c9b11;
-		background-image: url("images/overlay.png"), -moz-linear-gradient(45deg, #1c9b11 15%, #000000 85%);
-		background-image: url("images/overlay.png"), -webkit-linear-gradient(45deg,#1c9b11 15%, #000000 85%);
-		background-image: url("images/overlay.png"), -ms-linear-gradient(45deg, #1c9b11, #000000 85%);
-		background-image: url("images/overlay.png"), linear-gradient(45deg, #1c9b11, #000000 85%);
+		background-color: #00963a;
+		background-image: url("images/overlay.png"), -moz-linear-gradient(45deg, #00963a 15%, #d1e9e1 85%);
+		background-image: url("images/overlay.png"), -webkit-linear-gradient(45deg,#00963a 15%, #d1e9e1 85%);
+		background-image: url("images/overlay.png"), -ms-linear-gradient(45deg, #00963a, #d1e9e1 85%);
+		background-image: url("images/overlay.png"), linear-gradient(45deg, #00963a, #d1e9e1 85%);
 	}
 
 		body.is-preload *, body.is-preload *:before, body.is-preload *:after {
@@ -120,8 +120,8 @@ input, select, textarea {
 /* Type */
 
 	body {
-		background-color: #935d8c;
-		color: rgba(255, 255, 255, 0.65);
+		background-color: #96ffa5;
+		color: rgb(0, 0, 0);
 	}
 
 	body, input, select, textarea {
@@ -303,23 +303,23 @@ input, select, textarea {
 	}
 
 	input, select, textarea {
-		color: #ffffff;
+		color: #3cde16;
 	}
 
 	a:hover {
-		color: #ffffff;
+		color: #000000;
 	}
 
 	strong, b {
-		color: #ffffff;
+		color: #000000;
 	}
 
 	h1, h2, h3, h4, h5, h6 {
-		color: #ffffff;
+		color: #000000;
 	}
 
 	blockquote {
-		border-left-color: rgba(255, 255, 255, 0.35);
+		border-left-color: rgb(65, 212, 34);
 	}
 
 	code {
@@ -2872,6 +2872,7 @@ input, select, textarea {
 		list-style: none;
 		cursor: default;
 	}
+
 
 		.statistics li {
 			-moz-flex: 1;
