@@ -7,7 +7,7 @@
 {% load static %}
 
 
-<html xmlns="http://www.w3.org/1999/html">
+<html>
 	<head>
 		<title>{{ nombre }} {{ ap_pat }}</title>
 		<meta charset="utf-8" />
@@ -28,14 +28,46 @@
 				<!-- Header -->
 					<header id="header" class="alt">
 						{%if foto.url%}
-							<span class="logo" ><img src="{{foto.url}}" widht = "300" height = "300" /></span>
+							<span class="logo" ><img src="{{ foto.url }}" widht = "300" height = "300" /></span>
                         {% else %}
                             <span class="logo"><img src="{% static 'css/user1.png' %}" alt="" /></span>
 						{%endif%}
 						<h1>{{ nombre }} {{ ap_pat }} {{ ap_mat }}</h1>
 						<p>BIENVENID@<br />
-                         Organización :<a href="#{{institucion}}">{{ institucion }}</a>
+                         Organización :<a href="#{{institucion.pag_web}}">{{ institucion }}</a>
 								<ul>{{ query }} </ul></a></p>
+                    {% if unu == "nofoto" %}
+                        <div class="alert alert-danger" role="alert">
+                             No ha ingresado ninguna foto ):
+                        </div>
+                    {% elif unu == "sifoto" %}
+                        <div class="alert alert-success" role="alert">
+
+                         Su foto se ha cambiado exitosamente :)
+                        </div>
+                    {% endif %}
+
+                                    <form action="/Refoto/" method="post" enctype="multipart/form-data">{% csrf_token %}
+                                    <div class="form-floating">
+							            	<input type="email" name="user" class="form-control" id="floatingText" placeholder=" " >
+							            	<label for="floatingPassword">Usuario</label>
+
+                                    </div>
+                                                  <div class="form-floating">
+
+							            	<input type="password" name="pass" class="form-control" id="floatingPassword" placeholder=" " minlength="8">
+							            	<label for="floatingPassword">Contraseña</label>
+
+							            </div>
+                             <div class="form-floating">
+
+							            	<input type="file" name="poto" accept="image/*" id="id_photo" >
+							            	<label for="floatingPassword">Foto</label>
+
+							            </div>
+
+                            <input type="submit" class="button wide primary" value="Guardar Foto">
+                        </form>
 
 					</header>
 				<!-- Nav -->
@@ -67,6 +99,7 @@
 											<h2>Anuncios</h2>
 										</header>
 										<p>Infórmate de todo lo que está pasando</p>
+
                                     {% if nanuncios == 0 %}
                                         <h1>No hay anuncios ):</h1>
 
@@ -161,36 +194,39 @@
                                             </div>
 
                                         </div>
-                                        {% endif %} <br>
-                                        {% if rol == "Administrador" %}
+                                                                 {% if rol == "Administrador" %}
+                                    <p>
+  <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Link with href
+  </a>
 
-                                            <button class="button" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Agregar anuncio</button>
-
-                                                <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
-                                                    <div class="offcanvas-header">
-                                                        <h5 class="offcanvas-title" id="offcanvasBottomLabel">Agregar Anuncio</h5>
-                                                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                                                    </div>
-                                                <div class="offcanvas-body small">
-                                                    ...
-                                                </div>
-                                                </div>
+</p>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    <iframe src="{% url 'anuncios' %}" style="border-width:0" width="1000" height="800" ></iframe>
+  </div>
+</div>
 
                                         {% endif %}
-
-
+                                        {% endif %} <br>
                                         </div>
                                         </div>
 							</section>
 
 						<!-- First Section -->
 							<section id="calendario" class="main special">
-								<header class="major">
+    								<header class="major">
 									<h2>Calendario de Actividades</h2>
 								</header>
 
 								<!--<ul class="features">-->
-                <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=2&amp;bgcolor=%237CB342&amp;ctz=America%2FSantiago&amp;src=cnJlcjZ1MmphbDVhdGt1bnFlajdzYWZyYjBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=ZXMuY2wjaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%23009688&amp;color=%230B8043&amp;title=COLUNGA&amp;showPrint=0&amp;showCalendars=0" style="border-width:0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
+                                {% if calendario %}
+                                <h1>Calendario "{{ institucion }}"</h1>
+                <iframe id="calendario" src = "{{ calendario }}" style="border-width:0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
+                                {% endif %}
+
+                                <h1>Calendario General</h1>
+                <iframe id="calendario_general" src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=2&amp;bgcolor=%237CB342&amp;ctz=America%2FSantiago&amp;src=cnJlcjZ1MmphbDVhdGt1bnFlajdzYWZyYjBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=ZXMuY2wjaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%23009688&amp;color=%230B8043&amp;title=COLUNGA&amp;showPrint=0&amp;showCalendars=0" style="border-width:0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
 
 							</section>
 						<!-- Second Section -->
@@ -230,8 +266,8 @@
 								</header>
 								<footer class="major">
 									<ul class="actions special">
-										<li><a href="Fundacion.html" class="button primary">Ir a foros</a></li>
-										<li><a href="Fundacion.html" class="button">Crear Foro</a></li>
+										<li><a href="Foro.html" class="button primary">Ir a foros</a></li>
+										<li><a href="{% url 'foro' %}" class="button">Crear Foro</a></li>
 									</ul>
 								</footer>
 							</section>
@@ -254,11 +290,11 @@
 
                                     {% for i in org %}
                                         <p>
-                                            <a class="image" data-bs-toggle="collapse" href="#{{i.nombre_organizacion}}" role="button" aria-expanded="true" aria-controls="collapseExample">
+                                            <a class="image" data-bs-toggle="collapse" href="#org{{ i.id }}" role="button" aria-expanded="true" aria-controls="collapseExample">
                                                <img src="{{i.logo.url}}" widht = "300" height = "300">
                                             </a>
                                         </p>
-                                        <div class="collapse" id="{{i.nombre_organizacion}}">
+                                        <div class="collapse" id="org{{ i.id }}">
                                             <div class="card card-body">
                                             <p>{{ i.pag_web }}</p>
                                             <h1>{{ i.descripcion_organizacion }}</h1>

@@ -2,11 +2,11 @@ from django.shortcuts import render
 #from django.http import HttpResponse
 #import datetime
 #from django.template import Template, Context
-from apuri.models import Miembro, Organizaciones, Anuncio
+from apuri.models import Miembro, Organizaciones, Anuncio, Post
 from django.core.mail import send_mail
 from django.conf import settings
 from random import randint
-#from .forms import cambiarperfil
+from .forms import PostForm,FormAnuncios, Cambiarperfil
 
 def post_list(request):
     return render(request, 'Portal.html', {})
@@ -28,8 +28,8 @@ def Login(request):
 
              if usuario.contraseña == contraseña:
 
-
                  institucion = usuario.institucion
+                 google = institucion.calendario
                  miembros = Miembro.objects.all()
                  org = Organizaciones.objects.all()
                  anunciont = Anuncio.objects.all()
@@ -48,24 +48,24 @@ def Login(request):
                  perfil = usuario.photo
                  mensaje = 'pase_nomas'
                  if a == 0:
-                     return render(request, "Inicio.html", {"query": email, "mensaje": mensaje, 'nanuncios': a,
+                     return render(request, "Inicio.html", {"query": email, "mensaje": mensaje, 'nanuncios': a, "calendario":google,
                     "contraseña": contraseña, "institucion": institucion, "nombre": nombre, "ap_pat": ap_pat, "ap_mat":ap_mat, "foto" : perfil, "org": org, "rol": rol, "miembros": miembros})
                  elif a == 1:
-                     return render(request, "Inicio.html", {"query": email, "mensaje": mensaje, "anuncio1": anuncios[0],
+                     return render(request, "Inicio.html", {"query": email, "mensaje": mensaje, "anuncio1": anuncios[0],"calendario":google,
                                                             "anuncio2": anuncios[1], "anuncio3": anuncios[2],
                                                             "contraseña": contraseña, "institucion": institucion,
                                                             "nombre": nombre, "ap_pat": ap_pat, "ap_mat": ap_mat,
                                                             "foto": perfil, "org": org, "rol": rol,
                                                             "miembros": miembros})
                  elif a == 2:
-                     return render(request, "Inicio.html", {"query": email, "mensaje": mensaje, "anuncio1": anuncios[0],
+                     return render(request, "Inicio.html", {"query": email, "mensaje": mensaje, "anuncio1": anuncios[0],"calendario":google,
                                                             "anuncio2": anuncios[1], 'nanuncios': a,
                                                             "contraseña": contraseña, "institucion": institucion,
                                                             "nombre": nombre, "ap_pat": ap_pat, "ap_mat": ap_mat,
                                                             "foto": perfil, "org": org, "rol": rol,
                                                             "miembros": miembros})
                  else:
-                     return render(request, "Inicio.html", {"query": email, "mensaje": mensaje, "anuncio1": anuncios[0],
+                     return render(request, "Inicio.html", {"query": email, "mensaje": mensaje, "anuncio1": anuncios[0],"calendario":google,
                                                             "anuncio2": anuncios[1], "anuncio3": anuncios[2], 'nanuncios': a,
                                                             "contraseña": contraseña, "institucion": institucion,
                                                             "nombre": nombre, "ap_pat": ap_pat, "ap_mat": ap_mat,
@@ -154,8 +154,130 @@ def Re_contraseña(request):
         f = "no"
         return render(request, "Portal.html", {"mensaje": mensaje, "f":f})
 
+def Refoto(request):
+    if request.POST['user']:
+        #mensaje_usu = 'Usuario: %r <br> ' %request.GET["user"]
+        email = request.POST["user"]
+        usuarios = Miembro.objects.filter(email__exact=email)
+
+        contraseña = request.POST['pass']
+
+        mensaje = 'Correo incorrecto'
+        f = "no"
+
+        for usuario in usuarios:
+
+             if usuario.contraseña == contraseña:
+
+                 institucion = usuario.institucion
+                 google = institucion.calendario
+                 miembros = Miembro.objects.all()
+                 org = Organizaciones.objects.all()
+                 anunciont = Anuncio.objects.all()
+                 if request.FILES.get["poto"]:
+                    foto = request.FILES.POST["poto"]
+                    unu = "sifoto"
+                    usuario.photo = foto
+                    usuario.save()
+                 else:
+                    unu = "nofoto"
+                 anuncios = []
+                 a = 0
+                 for i in reversed(anunciont):
+                     if a < 3:
+                         if i.organ == institucion or i.organ==None:
+                            anuncios.append(i)
+                            a += 1
+                 print(anuncios)
+                 nombre = usuario.nombre
+
+                 ap_pat = usuario.apellido_pat
+                 ap_mat = usuario.apellido_mat
+                 rol = usuario.rol
+                 perfil = usuario.photo
+                 mensaje = 'pase_nomas'
+                 if a == 0:
+                     return render(request, "Inicio.html", {"query": email, "mensaje": mensaje, 'nanuncios': a, "calendario":google,"unu":unu,
+                    "contraseña": contraseña, "institucion": institucion, "nombre": nombre, "ap_pat": ap_pat, "ap_mat":ap_mat, "foto" : perfil, "org": org, "rol": rol, "miembros": miembros})
+                 elif a == 1:
+                     return render(request, "Inicio.html", {"query": email, "mensaje": mensaje, "anuncio1": anuncios[0],"calendario":google,
+                                                            "anuncio2": anuncios[1], "anuncio3": anuncios[2],"unu":unu,
+                                                            "contraseña": contraseña, "institucion": institucion,
+                                                            "nombre": nombre, "ap_pat": ap_pat, "ap_mat": ap_mat,
+                                                            "foto": perfil, "org": org, "rol": rol,
+                                                            "miembros": miembros})
+                 elif a == 2:
+                     return render(request, "Inicio.html", {"query": email, "mensaje": mensaje, "anuncio1": anuncios[0],"calendario":google,
+                                                            "anuncio2": anuncios[1], 'nanuncios': a,"unu":unu,
+                                                            "contraseña": contraseña, "institucion": institucion,
+                                                            "nombre": nombre, "ap_pat": ap_pat, "ap_mat": ap_mat,
+                                                            "foto": perfil, "org": org, "rol": rol,
+                                                            "miembros": miembros})
+                 else:
+                     return render(request, "Inicio.html", {"query": email, "mensaje": mensaje, "anuncio1": anuncios[0],"calendario":google,
+                                                            "anuncio2": anuncios[1], "anuncio3": anuncios[2], 'nanuncios': a,
+                                                            "contraseña": contraseña, "institucion": institucion,"unu":unu,
+                                                            "nombre": nombre, "ap_pat": ap_pat, "ap_mat": ap_mat,
+                                                            "foto": perfil, "org": org, "rol": rol,
+                                                            "miembros": miembros})
+             elif usuario.contraseña != contraseña:
+                 nombre = usuario.nombre
+                 mensaje = 'Contraseña incorrecta'
+                 f = "no"
+                 return render(request, "Portal.html", {"query": email, "mensaje": mensaje, "nombre":nombre,"f":f})
+
+             else :
+                 f = "no"
+                 nombre = usuario.nombre
+                 mensaje = "no_flaco"
+                 return render(request, "Portal.html", {"query": email, "mensaje": mensaje, "nombre": nombre,"f":f})
+
+
+    else:
+        mensaje = ''
+        f = "ni"
+
+    return render(request, "Portal.html", { "mensaje": mensaje,"f":f})
+
+
+
 
 def Portal(request):
     return render(request, 'Portal.html')
+
+
+class anun():
+
+    def crear_anuncios(request):
+        if request.method == "POST":
+            form = FormAnuncios(request.POST)
+            if form.is_valid():
+                post = form.save(commit=False)
+                post.author = request.user
+                post.save()
+                return render(request, 'crear_anuncio.html', {'form': form})
+        else:
+            form = FormAnuncios()
+        return render(request, 'crear_anuncio.html', {'form': form})
+
+
+class foro():
+
+    def crear_foro(request):
+        if request.method == "POST":
+            form = PostForm(request.POST)
+            if form.is_valid():
+                post = form.save(commit=False)
+                post.author = request.user
+                post.save()
+                return render(request, 'crearforo.html', {'form': form})
+        else:
+            form = PostForm()
+        return render(request, 'crearforo.html', {'form': form})
+
+    def mostrar_foros(request):
+        form = Post.objects.all()
+        return render(request, 'Foro.html', {'form': form})
+
 
 # Create your views here.

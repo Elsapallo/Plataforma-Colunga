@@ -24,6 +24,7 @@ class Organizaciones(models.Model):
     pag_web = models.CharField(max_length=100, null=True)
     descripcion_organizacion= models.TextField(null=True)
     logo = models.ImageField(upload_to="Logos", null=True, verbose_name="Logo institución")
+    calendario = models.TextField(blank=True,null=True)
     #miembros = models.ForeignKey(Miembro, null=True, blank=True, on_delete=models.CASCADE)
     def __str__ (self):
 
@@ -31,13 +32,6 @@ class Organizaciones(models.Model):
 
 opciones = [("Usuario","Usuario"),("Administrador","Administrador")]
 a = 0
-#org = Organizaciones.objects.all()
-
-#org = Organizaciones.objects.values_list('id', 'nombre_organizacion')
-
-#for i in org:
-    #opciones.append(list(i))###
-
 
 class Miembro(models.Model):
     nombre = models.CharField(max_length=30)
@@ -63,8 +57,8 @@ class Anuncio(models.Model):
     desc = models.CharField(max_length=200, verbose_name="Tipo anuncio")
     texto = models.TextField()
     foto = models.ImageField(upload_to="Anuncios", null=True, verbose_name="Foto de Anuncio")
-    hini = models.DateTimeField( blank=True, null=True)
-    hfin = models.DateTimeField( blank=True, null=True)
+    hini = models.DateTimeField(blank=True, null=True, verbose_name="Inicio evento")
+    hfin = models.DateTimeField(blank=True, null=True, verbose_name="Termino evento")
 
     def save(self, *args, **kwargs):
         if not self.organ:
