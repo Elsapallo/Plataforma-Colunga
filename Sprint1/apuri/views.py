@@ -174,8 +174,8 @@ def Refoto(request):
                  miembros = Miembro.objects.all()
                  org = Organizaciones.objects.all()
                  anunciont = Anuncio.objects.all()
-                 if request.FILES.get["poto"]:
-                    foto = request.FILES.POST["poto"]
+                 if request.FILES["poto"]:
+                    foto = request.FILES["poto"]
                     unu = "sifoto"
                     usuario.photo = foto
                     usuario.save()

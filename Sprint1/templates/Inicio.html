@@ -28,7 +28,7 @@
 				<!-- Header -->
 					<header id="header" class="alt">
 						{%if foto.url%}
-							<span class="logo" ><img src="{{ foto.url }}" widht = "300" height = "300" /></span>
+                            <img src="{{foto.url}}" widht = "300" height = "300">
                         {% else %}
                             <span class="logo"><img src="{% static 'css/user1.png' %}" alt="" /></span>
 						{%endif%}
@@ -41,13 +41,43 @@
                              No ha ingresado ninguna foto ):
                         </div>
                     {% elif unu == "sifoto" %}
-                        <div class="alert alert-success" role="alert">
+                        <div class="alert alert-info" role="alert">
 
                          Su foto se ha cambiado exitosamente :)
                         </div>
                     {% endif %}
+					</header>
+				<!-- Nav -->
+					<nav id="nav" class="">
+						<ul>
+							<li><a href="#anuncios" class="active">Anuncios
+								<span class="icon solid fa-info-circle"></span></a></li>
+							<li><a href="#calendario">Calendario
+								<span class="icon solid fa-calendar-day"></span></a></li>
+							<li><a href="#social">Reuniones
+								<span class="icon solid fa-coffee"></span></a></li>
+							<li><a href="#foro">Foro
+								<span class="icon solid fa-comments"></span></a></li>
+                            <li><a href="#organizaciones">Organizaciones
+								<span class="icon solid fa-users"></span></a></li>
+                            <li><a class="button wide primary" data-bs-toggle="collapse" href="#perfil" role="button" aria-expanded="false" aria-controls="collapseExample">
 
-                                    <form action="/Refoto/" method="post" enctype="multipart/form-data">{% csrf_token %}
+                            Perfil<span class="icon solid fa-users"></span></a></li>
+							<li><a href="http://127.0.0.1:8000/">Cerrar sesión
+								<span class="fas fa-power-off"></span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Teams -->
+							<section id="anuncios" class="main special">
+                            <p>
+
+<div class="collapse" id="perfil">
+  <div class="card card-body">
+                      <form action="/Refoto/" method="post" enctype="multipart/form-data">{% csrf_token %}
                                     <div class="form-floating">
 							            	<input type="email" name="user" class="form-control" id="floatingText" placeholder=" " >
 							            	<label for="floatingPassword">Usuario</label>
@@ -68,28 +98,8 @@
 
                             <input type="submit" class="button wide primary" value="Guardar Foto">
                         </form>
-
-					</header>
-				<!-- Nav -->
-					<nav id="nav" class="">
-						<ul>
-							<li><a href="#anuncios" class="active">Anuncios
-								<span class="icon solid fa-info-circle"></span></a></li>
-							<li><a href="#calendario">Calendario
-								<span class="icon solid fa-calendar-day"></span></a></li>
-							<li><a href="#social">Reuniones
-								<span class="icon solid fa-coffee"></span></a></li>
-							<li><a href="#foro">Foro
-								<span class="icon solid fa-comments"></span></a></li>
-							<li><a href="#organizaciones">Organizaciones
-								<span class="icon solid fa-users"></span></a></li>
-							<li><a href="http://127.0.0.1:8000/">Cerrar sesión
-								<span class="fas fa-power-off"></span></a></li>
-						</ul>
-					</nav>
-
-				<!-- Main -->
-					<div id="main">
+  </div>
+</div>
 
 						<!-- Teams -->
 							<section id="anuncios" class="main special">
@@ -99,6 +109,21 @@
 											<h2>Anuncios</h2>
 										</header>
 										<p>Infórmate de todo lo que está pasando</p>
+
+                                                                                       {% if rol == "Administrador" %}
+                                    <p>
+  <a class="button" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Crear anuncio
+  </a>
+
+</p>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    <iframe src="{% url 'anuncios' %}" style="border-width:0" width="1000" height="800" ></iframe>
+  </div>
+</div>
+
+                                        {% endif %}
 
                                     {% if nanuncios == 0 %}
                                         <h1>No hay anuncios ):</h1>
@@ -193,21 +218,8 @@
                                                 </div>
                                             </div>
 
-                                        </div>
-                                                                 {% if rol == "Administrador" %}
-                                    <p>
-  <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-    Link with href
-  </a>
+                                        </div> <br>
 
-</p>
-<div class="collapse" id="collapseExample">
-  <div class="card card-body">
-    <iframe src="{% url 'anuncios' %}" style="border-width:0" width="1000" height="800" ></iframe>
-  </div>
-</div>
-
-                                        {% endif %}
                                         {% endif %} <br>
                                         </div>
                                         </div>
@@ -216,7 +228,7 @@
 						<!-- First Section -->
 							<section id="calendario" class="main special">
     								<header class="major">
-									<h2>Calendario de Actividades</h2>
+									<h2>Calendarios de Actividades</h2>
 								</header>
 
 								<!--<ul class="features">-->
