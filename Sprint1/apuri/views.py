@@ -2,7 +2,7 @@ from django.shortcuts import render
 #from django.http import HttpResponse
 #import datetime
 #from django.template import Template, Context
-from apuri.models import Miembro, Organizaciones, Anuncio, Post
+from apuri.models import Miembro, Organizaciones, Anuncio, Post, temas
 from django.core.mail import send_mail
 from django.conf import settings
 from random import randint
@@ -277,7 +277,6 @@ class foro():
 
     def mostrar_foros(request):
         form = Post.objects.all()
-        return render(request, 'Foro.html', {'form': form})
-
-
+        farm = temas.objects.all()
+        return render(request, 'Foro.html', {'form': form, 'farm': farm })
 # Create your views here.

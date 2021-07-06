@@ -60,9 +60,9 @@
 								<span class="icon solid fa-comments"></span></a></li>
                             <li><a href="#organizaciones">Organizaciones
 								<span class="icon solid fa-users"></span></a></li>
-                            <li><a class="button wide primary" data-bs-toggle="collapse" href="#perfil" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            <li><a data-bs-toggle="collapse" href="#perfil" role="button" aria-expanded="false" aria-controls="collapseExample">
 
-                            Perfil<span class="icon solid fa-users"></span></a></li>
+                            Perfil<span class="icon solid fa-user"></span></a></li>
 							<li><a href="http://127.0.0.1:8000/">Cerrar sesión
 								<span class="fas fa-power-off"></span></a></li>
 						</ul>
@@ -88,15 +88,15 @@
 							            	<input type="password" name="pass" class="form-control" id="floatingPassword" placeholder=" " minlength="8">
 							            	<label for="floatingPassword">Contraseña</label>
 
-							            </div>
+							            </div><br>
                              <div class="form-floating">
 
 							            	<input type="file" name="poto" accept="image/*" id="id_photo" >
 							            	<label for="floatingPassword">Foto</label>
 
-							            </div>
+							            </div><br>
 
-                            <input type="submit" class="button wide primary" value="Guardar Foto">
+                            <input type="submit" class="button" value="Guardar Foto">
                         </form>
   </div>
 </div>
@@ -254,9 +254,10 @@
 										<span class="icon solid fa-users" ></span>
 										<a href="https://zoom.us/join"> <strong>Zoom</strong> reuniones</a>
 									</li>
+
                                     <li class="style2">
 										<span class="icon brands fa-discord"></span>
-										<strong>Discord</strong> Canales
+                                        <a href="https://discord.gg/spFwASwNr5"><strong>Discord</strong> Canales</a>
 									</li>
 
 								</ul>
@@ -278,8 +279,7 @@
 								</header>
 								<footer class="major">
 									<ul class="actions special">
-										<li><a href="Foro.html" class="button primary">Ir a foros</a></li>
-										<li><a href="{% url 'foro' %}" class="button">Crear Foro</a></li>
+										<li><a href="{% url 'foro' %}" class="button">Ir a Foros</a></li>
 									</ul>
 								</footer>
 							</section>

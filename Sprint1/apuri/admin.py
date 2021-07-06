@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Miembro,Organizaciones,Anuncio
+from .models import Post, Miembro,Organizaciones,Anuncio, temas
 
 class MiemborosAdmin(admin.ModelAdmin):
     list_display = ["nombre","apellido_pat", "apellido_mat", "institucion"]
@@ -17,7 +17,12 @@ class AnuncioAdmin(admin.ModelAdmin):
     list_display = ["titulo"]
     search_fields = ["titulo"]
 
+class TemasAdmin(admin.ModelAdmin):
+    list_display = ["nombre_tema"]
+    search_fields = ["nombre_tema"]
+
 admin.site.register(Post)
+admin.site.register(temas,TemasAdmin)
 admin.site.register(Anuncio, AnuncioAdmin)
 admin.site.register(Miembro,MiemborosAdmin)
 admin.site.register(Organizaciones,OrganizacionesAdmin)

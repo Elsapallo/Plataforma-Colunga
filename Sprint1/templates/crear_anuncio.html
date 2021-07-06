@@ -9,7 +9,6 @@
     <body>
         <div class="page-header">
             <a href="{% url 'editar' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-            <h1><a href="/">COLUNGA</a></h1>
         </div>
         <div class="content container">
             <div class="row">
@@ -17,7 +16,7 @@
                           <h2>nuevo post</h2>
     <form method="POST" class="post-form">
         {% csrf_token %}
-        {{ form }}
+        {{ form.as_p }}
         <button type="submit" class="btn btn-primary">Guardar</button>
         <a href="{% url 'anuncios' %}"></a>
     </form>

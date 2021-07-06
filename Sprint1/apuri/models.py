@@ -3,9 +3,16 @@ from django.utils import timezone
 import pickle
     
 # Create your models here.
+class temas (models.Model):
+    nombre_tema = models.CharField(max_length=200,verbose_name="Tema")
+
+    def __str__(self):
+        return self.nombre_tema
+
 class Post(models.Model):
     author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
+    tema_post = models.ForeignKey(temas, on_delete=models.CASCADE, null=True)
     text = models.TextField()
     created_date = models.DateTimeField(
             default=timezone.now)
