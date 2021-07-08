@@ -7,6 +7,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 from random import randint
 from .forms import PostForm,FormAnuncios, Cambiarperfil
+# Create your views here.
 
 def post_list(request):
     return render(request, 'Portal.html', {})
@@ -252,9 +253,9 @@ class anun():
         if request.method == "POST":
             form = FormAnuncios(request.POST)
             if form.is_valid():
-                post = form.save(commit=False)
-                post.author = request.user
-                post.save()
+                anun = form.save(commit=False)
+                anun.foto = request.FILES['poto']
+                anun.save()
                 return render(request, 'crear_anuncio.html', {'form': form})
         else:
             form = FormAnuncios()
@@ -268,7 +269,6 @@ class foro():
             form = PostForm(request.POST)
             if form.is_valid():
                 post = form.save(commit=False)
-                post.author = request.user
                 post.save()
                 return render(request, 'crearforo.html', {'form': form})
         else:
@@ -279,4 +279,16 @@ class foro():
         form = Post.objects.all()
         farm = temas.objects.all()
         return render(request, 'Foro.html', {'form': form, 'farm': farm })
-# Create your views here.
+
+
+class perfil():
+    def Cambiarperfil(request):
+        if request.method == "POST":
+            form = Cambiarperfil(request.POST)
+            if form.is_valid():
+                nusuario = form.save(commit=False)
+                nusuario.save()
+                return render(request, 'crear_usuario.html', {'form': form})
+        else:
+            form = Cambiarperfil()
+        return render(request, 'crear_usuario.html', {'form': form})

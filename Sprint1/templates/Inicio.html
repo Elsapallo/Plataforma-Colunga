@@ -27,10 +27,10 @@
 
 				<!-- Header -->
 					<header id="header" class="alt">
-						{%if foto.url%}
+						{%if foto %}
                             <img src="{{foto.url}}" widht = "300" height = "300">
                         {% else %}
-                            <span class="logo"><img src="{% static 'css/user1.png' %}" alt="" /></span>
+                            <span class="logo"><img src="{% static 'perfil/usuario.png' %}" alt="" /></span>
 						{%endif%}
 						<h1>{{ nombre }} {{ ap_pat }} {{ ap_mat }}</h1>
 						<p>BIENVENID@<br />
@@ -73,16 +73,15 @@
 
 						<!-- Teams -->
 							<section id="anuncios" class="main special">
-                            <p>
 
-<div class="collapse" id="perfil">
-  <div class="card card-body">
-                      <form action="/Refoto/" method="post" enctype="multipart/form-data">{% csrf_token %}
-                                    <div class="form-floating">
+                            <div class="collapse" id="perfil">
+                                <div class="card card-body">
+                                    <form action="/Refoto/" method="post" enctype="multipart/form-data">{% csrf_token %}
+                                        <div class="form-floating">
 							            	<input type="email" name="user" class="form-control" id="floatingText" placeholder=" " >
 							            	<label for="floatingPassword">Usuario</label>
 
-                                    </div>
+                                        </div>
                                                   <div class="form-floating">
 
 							            	<input type="password" name="pass" class="form-control" id="floatingPassword" placeholder=" " minlength="8">
@@ -110,20 +109,19 @@
 										</header>
 										<p>Infórmate de todo lo que está pasando</p>
 
-                                                                                       {% if rol == "Administrador" %}
+                              {% if rol == "Administrador" %}
                                     <p>
-  <a class="button" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-    Crear anuncio
-  </a>
+                                        <a class="button" data-bs-toggle="collapse" href="#Anuncio" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                            Crear anuncio
+                                        </a>
+                                    </p>
+                                    <div class="collapse" id="Anuncio">
+                                        <div class="card card-body">
+                                            <iframe src="{% url 'anuncios' %}" style="border-width:0" width="1000" height="800" ></iframe>
+                                        </div>
+                                    </div>
 
-</p>
-<div class="collapse" id="collapseExample">
-  <div class="card card-body">
-    <iframe src="{% url 'anuncios' %}" style="border-width:0" width="1000" height="800" ></iframe>
-  </div>
-</div>
-
-                                        {% endif %}
+                              {% endif %}
 
                                     {% if nanuncios == 0 %}
                                         <h1>No hay anuncios ):</h1>
@@ -132,10 +130,16 @@
                                         <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
                                             <div class="carousel-inner">
                                                 <div class="carousel-item active" data-bs-interval="10000">
-                                                    <img src="{{ anuncio1.foto.url }}" class="d-block w-100" alt="...">
+                                                    {% if anunio1.foto %}
+                                                        <img src="{{ anuncio1.foto.url }}" class="d-block w-100" alt="...">
+                                                    {% else %}
+                                                     <img src="{% static 'Anuncios/fondo3.jpg' %}" class="d-block w-100" alt="...">
+                                                    {% endif %}
                                                     <div class="carousel-caption d-none d-md-block">
+                                                    {% if anuncio1.titulo %}
                                                         <h1>{{ anuncio1.titulo }}</h1>
                                                         <p>{{ anuncio1.texto }}<br />
+                                                    {% endif %}
                                                          {% if anuncio1.hini %}
                                                             Inicio:    {{ anuncio1.hini }}<br />
                                                             Término:   {{ anuncio1.hfin }}
@@ -152,20 +156,33 @@
                                             </div>
                                             <div class="carousel-inner">
                                                 <div class="carousel-item active" data-bs-interval="5000">
-                                                    <img src="{{ anuncio1.foto.url }}" class="d-block w-100" alt="...">
-                                                    <div class="carousel-caption d-none d-md-block">
+                                                    {% if anunio1.foto %}
+                                                        <img src="{{ anuncio1.foto.url }}" class="d-block w-100" alt="...">
+                                                    {% else %}
+                                                     <img src="{% static 'Anuncios/fondo3.jpg' %}" class="d-block w-100" alt="...">
+                                                    {% endif %}
+                                                         {% if anuncio1.titulo %}
                                                         <h1>{{ anuncio1.titulo }}</h1>
+                                                    {% endif %}
+                                                    {% if anuncio1.titulo %}
                                                         <p>{{ anuncio1.texto }}<br />
+                                                    {% endif %}
                                                          {% if anuncio1.hini %}
                                                             Inicio:    {{ anuncio1.hini }}<br />
                                                             Término:   {{ anuncio1.hfin }}
                                                          {% endif %}    </p></div>
                                                 </div>
                                                 <div class="carousel-item">
-                                                    <img src="{{ anuncio2.foto.url }}" class="d-block w-100" alt="...">
+                                                    {% if anunio2.foto %}
+                                                        <img src="{{ anuncio2.foto.url }}" class="d-block w-100" alt="...">
+                                                    {% else %}
+                                                     <img src="{% static 'Anuncios/fondo3.jpg' %}" class="d-block w-100" alt="...">
+                                                    {% endif %}
                                                     <div class="carousel-caption d-none d-md-block">
-                                                        <h1>{{  anuncio2.titulo }}</h1>
+                                                    {% if anuncio2.titulo %}
+                                                        <h1>{{ anuncio2.titulo }}</h1>
                                                         <p>{{ anuncio2.texto }}<br />
+                                                    {% endif %}
                                                          {% if anuncio1.hini %}
                                                             Inicio:    {{ anuncio2.hini }}<br />
                                                             Término:   {{ anuncio2.hfin }}
@@ -184,10 +201,16 @@
                                             </div>
                                             <div class="carousel-inner">
                                                 <div class="carousel-item active" data-bs-interval="10000">
-                                                    <img src="{{ anuncio1.foto.url }}" class="d-block w-100" alt="...">
+                                                {% if anuncio1.foto %}
+                                                        <img src="{{ anuncio1.foto.url }}" class="d-block w-100" alt="...">
+                                                {% else %}
+                                                         <img src="{% static 'Anuncios/fondo3.jpg' %}" class="d-block w-100" alt="...">
+                                                {% endif %}
                                                     <div class="carousel-caption d-none d-md-block">
+                                                    {% if anuncio1.titulo %}
                                                         <h1>{{ anuncio1.titulo }}</h1>
                                                         <p>{{ anuncio1.texto }}<br />
+                                                    {% endif %}
                                                          {% if anuncio1.hini %}
                                                             Inicio:    {{ anuncio1.hini }}<br />
                                                             Término:   {{ anuncio1.hfin }}
@@ -195,22 +218,34 @@
                                                      </div>
                                                 </div>
                                                 <div class="carousel-item" data-bs-interval="10000">
-                                                    <img src="{{ anuncio2.foto.url }}" class="d-block w-100" alt="...">
+                                                    {% if anunio2.foto %}
+                                                        <img src="{{ anuncio2.foto.url }}" class="d-block w-100" alt="...">
+                                                    {% else %}
+                                                     <img src="{% static 'Anuncios/fondo3.jpg' %}" class="d-block w-100" alt="...">
+                                                    {% endif %}
                                                     <div class="carousel-caption d-none d-md-block">
+                                                    {% if anuncio2.titulo %}
                                                         <h1>{{ anuncio2.titulo }}</h1>
                                                         <p>{{ anuncio2.texto }}<br />
-                                                         {% if anuncio1.hini %}
+                                                    {% endif %}
+                                                         {% if anuncio2.hini %}
                                                             Inicio:    {{ anuncio2.hini }}<br />
                                                             Término:   {{ anuncio2.hfin }}
                                                          {% endif %}    </p>
                                                     </div>
                                                 </div>
                                                 <div class="carousel-item">
-                                                    <img src="{{ anuncio3.foto.url }}" class="d-block w-100" alt="...">
-                                                    <div class="carousel-caption d-none d-md-block">
+                                                    {% if anunio3.foto %}
+                                                        <img src="{{ anuncio3.foto.url }}" class="d-block w-100" alt="...">
+                                                    {% else %}
+                                                         <img src="{% static 'Anuncios/fondo3.jpg' %}" class="d-block w-100" alt="...">
+                                                    {% endif %}
+                                                       <div class="carousel-caption d-none d-md-block">
+                                                    {% if anuncio3.titulo %}
                                                         <h1>{{ anuncio3.titulo }}</h1>
                                                         <p>{{ anuncio3.texto }}<br />
-                                                         {% if anuncio1.hini %}
+                                                    {% endif %}
+                                                         {% if anuncio3.hini %}
                                                             Inicio:    {{ anuncio3.hini }}<br />
                                                             Término:   {{ anuncio3.hfin }}
                                                          {% endif %}    </p>
@@ -234,7 +269,7 @@
 								<!--<ul class="features">-->
                                 {% if calendario %}
                                 <h1>Calendario "{{ institucion }}"</h1>
-                <iframe id="calendario" src = "{{ calendario }}" style="border-width:0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
+                                    <iframe id="calendario" src = "{{ calendario }}" style="border-width:0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
                                 {% endif %}
 
                                 <h1>Calendario General</h1>
@@ -298,6 +333,19 @@
 									<li><a href="Fundaciones/" class="button">Ver Organizaciones</a></li>
 								</ul>
 								--->
+                            {% if rol == "Administrador" %}
+                                    <p>
+                                        <a class="button" data-bs-toggle="collapse" href="#Nusuario" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                            Crear usuario
+                                        </a>
+                                    </p>
+                                    <div class="collapse" id="Nusuario">
+                                        <div class="card card-body">
+                                            <iframe src="{% url 'nusuario' %}" style="border-width:0" width="1200" height="800" ></iframe>
+                                        </div>
+                                    </div>
+
+                              {% endif %}
                                 <ul class="features">
 
                                     {% for i in org %}
@@ -309,13 +357,20 @@
                                         <div class="collapse" id="org{{ i.id }}">
                                             <div class="card card-body">
                                             <p>{{ i.pag_web }}</p>
+                                            {% if i.especial %}
+                                                <p>Especialidad: <strong>{{ i.especial }}</strong></p>
+                                            {% endif %}
                                             <h1>{{ i.descripcion_organizacion }}</h1>
                                             <br>
                                                 <ul class="features">
                                                 {% for miembro in miembros %}
                                                     {%  if miembro.institucion == i %}
                                                         <li>
+                                                        {% if miembro.photo %}
                                                             <span class="image"><img src="{{ miembro.photo.url }}" widht = "100" height = "100"></span>
+                                                        {% else %}
+                                                            <span class="image"><img src="{% static 'perfil/usuario.png' %}" widht = "100" height = "100"></span>
+                                                        {% endif %}
 									                    	<h3 ><strong>{{ miembro.nombre }} {{ miembro.apellido_pat }}</strong></h3>
 										                <p>{{ miembro.cargo }}<br>{{ miembro.email }}</p>
 									                </li>

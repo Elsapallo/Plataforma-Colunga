@@ -14,7 +14,7 @@ class OrganizacionesAdmin(admin.ModelAdmin):
     #list_per_page = 10
 
 class AnuncioAdmin(admin.ModelAdmin):
-    list_display = ["titulo"]
+    list_display = ["desc","tipo","organ"]
     search_fields = ["titulo"]
 
 class TemasAdmin(admin.ModelAdmin):

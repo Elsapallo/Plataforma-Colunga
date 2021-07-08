@@ -100,10 +100,10 @@ input, select, textarea {
 
 	body {
 		background-color: #00963a;
-		background-image: url("images/overlay.png"), -moz-linear-gradient(45deg, #00963a 15%, #a2aaad 85%);
-		background-image: url("images/overlay.png"), -webkit-linear-gradient(45deg,#00963a 15%, #a2aaad 85%);
-		background-image: url("images/overlay.png"), -ms-linear-gradient(45deg, #00963a, #a2aaad  85%);
-		background-image: url("images/overlay.png"), linear-gradient(45deg, #00963a, #a2aaad  85%);
+		background-image: url("images/overlay.png"), -moz-linear-gradient(45deg, #00963a 15%, #2cbee9 85%);
+		background-image: url("images/overlay.png"), -webkit-linear-gradient(45deg,#00963a 15%, #2cbee9 85%);
+		background-image: url("images/overlay.png"), -ms-linear-gradient(45deg, #00963a, #2cbee9 85%);
+		background-image: url("images/overlay.png"), linear-gradient(45deg, #00963a, #2cbee9 85%);
 	}
 
 		body.is-preload *, body.is-preload *:before, body.is-preload *:after {

@@ -13,11 +13,13 @@
         <div class="content container">
             <div class="row">
                 <div class="col-md-8">
-                          <h2>nuevo post</h2>
-    <form method="POST" class="post-form">
+                          <h2>Nuevo Anuncio</h2>
+    <form method="POST" class="post-form" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Guardar</button>
+        <input type="file" name="poto" accept="image/*" id="id_photo" >
+
+        <button type="submit" class="btn btn-primary">Crear Anuncio</button>
         <a href="{% url 'anuncios' %}"></a>
     </form>
 
