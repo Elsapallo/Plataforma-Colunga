@@ -27,7 +27,6 @@ COMO EMPEZAR:
     		cd Downloads
     		cd Plataforma-Colunga
 		cd Sprint1
-		myvenv\Scripts\activate
 		
 	y escribir lo siguiente:
 
@@ -57,7 +56,7 @@ COMO EMPEZAR:
   1. Debe estar en la carpeta Sprint1
   2. Debe escribir en la consola lo siguinte:
       
-      python manage.py createsuperuser
+      	-python manage.py createsuperuser
 
   3. ingrese su nombre,correo y cree su contraseña
   
