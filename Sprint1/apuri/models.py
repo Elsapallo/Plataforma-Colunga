@@ -39,7 +39,7 @@ class Miembro(models.Model):
     pin = models.IntegerField(default=000)
 
     def __str__(self):
-        return self.nombre
+        return self.email
 
 class Post(models.Model):
     author = models.ForeignKey(Miembro, on_delete=models.CASCADE)

@@ -149,30 +149,30 @@
                                         </div>
 
                                     {% elif nanuncios == 2 %}
-                                        <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                                           <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
                                             <div class="carousel-indicators">
                                                 <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                                                 <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
                                             </div>
                                             <div class="carousel-inner">
-                                                <div class="carousel-item active" data-bs-interval="5000">
-                                                    {% if anunio1.foto %}
+                                                <div class="carousel-item active" data-bs-interval="10000">
+                                                {% if anuncio1.foto %}
                                                         <img src="{{ anuncio1.foto.url }}" class="d-block w-100" alt="...">
-                                                    {% else %}
-                                                     <img src="{% static 'Anuncios/fondo3.jpg' %}" class="d-block w-100" alt="...">
-                                                    {% endif %}
-                                                         {% if anuncio1.titulo %}
-                                                        <h1>{{ anuncio1.titulo }}</h1>
-                                                    {% endif %}
+                                                {% else %}
+                                                         <img src="{% static 'Anuncios/fondo3.jpg' %}" class="d-block w-100" alt="...">
+                                                {% endif %}
+                                                    <div class="carousel-caption d-none d-md-block">
                                                     {% if anuncio1.titulo %}
+                                                        <h1>{{ anuncio1.titulo }}</h1>
                                                         <p>{{ anuncio1.texto }}<br />
                                                     {% endif %}
                                                          {% if anuncio1.hini %}
                                                             Inicio:    {{ anuncio1.hini }}<br />
                                                             Término:   {{ anuncio1.hfin }}
-                                                         {% endif %}    </p></div>
+                                                         {% endif %}    </p>
+                                                     </div>
                                                 </div>
-                                                <div class="carousel-item">
+                                                <div class="carousel-item" data-bs-interval="10000">
                                                     {% if anunio2.foto %}
                                                         <img src="{{ anuncio2.foto.url }}" class="d-block w-100" alt="...">
                                                     {% else %}
@@ -183,14 +183,13 @@
                                                         <h1>{{ anuncio2.titulo }}</h1>
                                                         <p>{{ anuncio2.texto }}<br />
                                                     {% endif %}
-                                                         {% if anuncio1.hini %}
+                                                         {% if anuncio2.hini %}
                                                             Inicio:    {{ anuncio2.hini }}<br />
                                                             Término:   {{ anuncio2.hfin }}
                                                          {% endif %}    </p>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
 
                                     {% elif nanuncios == 3 %}
                                         <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
@@ -341,7 +340,7 @@
                                     </p>
                                     <div class="collapse" id="Nusuario">
                                         <div class="card card-body">
-                                            <iframe src="{% url 'nusuario' %}" style="border-width:0" width="1200" height="800" ></iframe>
+                                            <iframe src="{% url 'nusuario' %}" style="border-width:0" width="100%" height="800" ></iframe>
                                         </div>
                                     </div>
 

@@ -50,17 +50,17 @@ def Login(request):
                  mensaje = 'pase_nomas'
                  if a == 0:
                      return render(request, "Inicio.html", {"query": email, "mensaje": mensaje, 'nanuncios': a, "calendario":google,
-                    "contraseña": contraseña, "institucion": institucion, "nombre": nombre, "ap_pat": ap_pat, "ap_mat":ap_mat, "foto" : perfil, "org": org, "rol": rol, "miembros": miembros})
+                    "contraseña": contraseña, "institucion": institucion, "nombre": nombre, "ap_pat": ap_pat, "ap_mat":ap_mat, "foto": perfil, "org": org, "rol": rol, "miembros": miembros})
                  elif a == 1:
-                     return render(request, "Inicio.html", {"query": email, "mensaje": mensaje, "anuncio1": anuncios[0],"calendario":google,
-                                                            "anuncio2": anuncios[1], "anuncio3": anuncios[2],
+                     return render(request, "Inicio.html", {"query": email, "mensaje": mensaje, "anuncio1": anuncios[0],
+                                                            'nanuncios': a,"calendario":google,
                                                             "contraseña": contraseña, "institucion": institucion,
                                                             "nombre": nombre, "ap_pat": ap_pat, "ap_mat": ap_mat,
                                                             "foto": perfil, "org": org, "rol": rol,
                                                             "miembros": miembros})
                  elif a == 2:
-                     return render(request, "Inicio.html", {"query": email, "mensaje": mensaje, "anuncio1": anuncios[0],"calendario":google,
-                                                            "anuncio2": anuncios[1], 'nanuncios': a,
+                     return render(request, "Inicio.html", {"query": email, "mensaje": mensaje, "anuncio1": anuncios[0],
+                                                            "anuncio2": anuncios[1], 'nanuncios': a, "calendario":google,
                                                             "contraseña": contraseña, "institucion": institucion,
                                                             "nombre": nombre, "ap_pat": ap_pat, "ap_mat": ap_mat,
                                                             "foto": perfil, "org": org, "rol": rol,
@@ -201,15 +201,15 @@ def Refoto(request):
                      return render(request, "Inicio.html", {"query": email, "mensaje": mensaje, 'nanuncios': a, "calendario":google,"unu":unu,
                     "contraseña": contraseña, "institucion": institucion, "nombre": nombre, "ap_pat": ap_pat, "ap_mat":ap_mat, "foto" : perfil, "org": org, "rol": rol, "miembros": miembros})
                  elif a == 1:
-                     return render(request, "Inicio.html", {"query": email, "mensaje": mensaje, "anuncio1": anuncios[0],"calendario":google,
-                                                            "anuncio2": anuncios[1], "anuncio3": anuncios[2],"unu":unu,
+                     return render(request, "Inicio.html", {"query": email, "mensaje": mensaje,'nanuncios': a, "anuncio1": anuncios[0],
+                                                            "anuncio2": anuncios[1],"unu":unu,"calendario":google,
                                                             "contraseña": contraseña, "institucion": institucion,
                                                             "nombre": nombre, "ap_pat": ap_pat, "ap_mat": ap_mat,
                                                             "foto": perfil, "org": org, "rol": rol,
                                                             "miembros": miembros})
                  elif a == 2:
-                     return render(request, "Inicio.html", {"query": email, "mensaje": mensaje, "anuncio1": anuncios[0],"calendario":google,
-                                                            "anuncio2": anuncios[1], 'nanuncios': a,"unu":unu,
+                     return render(request, "Inicio.html", {"query": email, "mensaje": mensaje,'nanuncios': a, "anuncio1": anuncios[0],
+                                                            "anuncio2": anuncios[1],"unu":unu,"calendario":google,
                                                             "contraseña": contraseña, "institucion": institucion,
                                                             "nombre": nombre, "ap_pat": ap_pat, "ap_mat": ap_mat,
                                                             "foto": perfil, "org": org, "rol": rol,
