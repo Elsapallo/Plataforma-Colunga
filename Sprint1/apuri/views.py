@@ -202,7 +202,7 @@ def Refoto(request):
                     "contraseña": contraseña, "institucion": institucion, "nombre": nombre, "ap_pat": ap_pat, "ap_mat":ap_mat, "foto" : perfil, "org": org, "rol": rol, "miembros": miembros})
                  elif a == 1:
                      return render(request, "Inicio.html", {"query": email, "mensaje": mensaje,'nanuncios': a, "anuncio1": anuncios[0],
-                                                            "anuncio2": anuncios[1],"unu":unu,"calendario":google,
+                                                            "unu":unu,"calendario":google,
                                                             "contraseña": contraseña, "institucion": institucion,
                                                             "nombre": nombre, "ap_pat": ap_pat, "ap_mat": ap_mat,
                                                             "foto": perfil, "org": org, "rol": rol,

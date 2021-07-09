@@ -130,10 +130,10 @@
                                         <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
                                             <div class="carousel-inner">
                                                 <div class="carousel-item active" data-bs-interval="10000">
-                                                    {% if anunio1.foto %}
+                                                    {% if anuncio1.foto %}
                                                         <img src="{{ anuncio1.foto.url }}" class="d-block w-100" alt="...">
                                                     {% else %}
-                                                     <img src="{% static 'Anuncios/fondo3.jpg' %}" class="d-block w-100" alt="...">
+                                                        <img src="{% static 'Anuncios/fondo3.jpg' %}" class="d-block w-100" alt="...">
                                                     {% endif %}
                                                     <div class="carousel-caption d-none d-md-block">
                                                     {% if anuncio1.titulo %}
@@ -173,7 +173,7 @@
                                                      </div>
                                                 </div>
                                                 <div class="carousel-item" data-bs-interval="10000">
-                                                    {% if anunio2.foto %}
+                                                    {% if anuncio2.foto %}
                                                         <img src="{{ anuncio2.foto.url }}" class="d-block w-100" alt="...">
                                                     {% else %}
                                                      <img src="{% static 'Anuncios/fondo3.jpg' %}" class="d-block w-100" alt="...">
@@ -234,7 +234,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="carousel-item">
-                                                    {% if anunio3.foto %}
+                                                    {% if anuncio3.foto %}
                                                         <img src="{{ anuncio3.foto.url }}" class="d-block w-100" alt="...">
                                                     {% else %}
                                                          <img src="{% static 'Anuncios/fondo3.jpg' %}" class="d-block w-100" alt="...">
@@ -355,7 +355,9 @@
                                         </p>
                                         <div class="collapse" id="org{{ i.id }}">
                                             <div class="card card-body">
-                                            <p>{{ i.pag_web }}</p>
+                                            {% if i.pag_web %}
+                                                <p>{{ i.pag_web }}</p>
+                                            {% endif %}
                                             {% if i.especial %}
                                                 <p>Especialidad: <strong>{{ i.especial }}</strong></p>
                                             {% endif %}
