@@ -42,10 +42,10 @@ class Miembro(models.Model):
         return self.email
 
 class Post(models.Model):
-    author = models.ForeignKey(Miembro, on_delete=models.CASCADE)
-    title = models.CharField(max_length=200)
-    tema_post = models.ForeignKey(temas, on_delete=models.CASCADE, null=True)
-    text = models.TextField()
+    autor = models.ForeignKey(Miembro, on_delete=models.CASCADE)
+    titulo = models.CharField(max_length=200)
+    tema = models.ForeignKey(temas, on_delete=models.CASCADE, null=True)
+    texto = models.TextField()
     created_date = models.DateTimeField(
             default=timezone.now)
     published_date = models.DateTimeField(
@@ -56,7 +56,7 @@ class Post(models.Model):
         self.save()
 
     def __str__(self):
-        return self.title
+        return self.titulo
 
 class Anuncio(models.Model):
     autor = models.ForeignKey(Miembro, on_delete=models.CASCADE, verbose_name="Autor")

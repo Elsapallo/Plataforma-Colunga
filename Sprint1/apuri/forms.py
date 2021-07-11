@@ -9,7 +9,7 @@ class Cambiarperfil(forms.ModelForm):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['author','title','tema_post','text']
+        fields = ['autor','titulo','tema','texto']
 
 class FormAnuncios(forms.ModelForm):
     class Meta:
